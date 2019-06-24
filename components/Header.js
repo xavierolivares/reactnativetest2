@@ -14,12 +14,9 @@ export function Header(props) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginTop: 25,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopColor: '#dadada',
-    borderTopWidth: 1,
     borderBottomWidth: 1,
     borderBottomColor: '#dadada'
   },
