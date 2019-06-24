@@ -11,13 +11,14 @@ import {
 } from 'react-native';
 
 import { Post } from '../components/Post';
+import { Header } from '../components/Header';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+      <Header text="Home" />
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
+        style={styles.container}>
         <Post />
         <Post />
         <Post />
@@ -76,6 +77,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    margin: 0,
+    padding: 0
   },
   developmentModeText: {
     marginBottom: 20,
@@ -83,9 +86,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
   },
   welcomeContainer: {
     alignItems: 'center',
