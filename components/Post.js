@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, Button } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export function Post(props) {
   return (
