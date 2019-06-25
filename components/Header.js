@@ -1,28 +1,48 @@
-import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image, Modal, TouchableHighlight } from 'react-native';
 
 export function Header(props) {
+  const [isModalVisible, setModalVisible] = useState(false);
+  console.log('modal: ', isModalVisible)
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
         {props.text}
       </Text>
 
-      <TouchableOpacity onPress={openCreatePost} style={styles.buttonContainer}>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.buttonContainer}>
         <Image
           style={styles.button}
           source={require('./../assets/images/NewPost.png')}
-        /> 
+        />
       </TouchableOpacity>
+
+      
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={isModalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+        }}>
+        <View style={{ marginTop: 22 }}>
+          <View>
+            <Text>Hello World!</Text>
+
+            <TouchableHighlight
+              onPress={() => {
+                setModalVisible(!isModalVisible);
+              }}>
+              <Text>Hide Modal</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </Modal>
 
     </View>
   );
 }
-
-function openCreatePost() {
-  console.log('button pressed!')
-}
-
 
 const styles = StyleSheet.create({
   container: {
