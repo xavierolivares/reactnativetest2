@@ -8,7 +8,7 @@ export function Header(props) {
         {props.text}
       </Text>
 
-      <TouchableOpacity onPress={openCreatePost}>
+      <TouchableOpacity onPress={openCreatePost} style={styles.buttonContainer}>
         <Image
           style={styles.button}
           source={require('./../assets/images/NewPost.png')}
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'center',
+    paddingLeft: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#dadada'
   },
@@ -43,5 +43,8 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'contain'
+  },
+  buttonContainer: {
+    paddingRight: 5
   }
 })
