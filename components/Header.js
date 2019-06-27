@@ -1,47 +1,39 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, Modal, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { CreatePost } from './CreatePost';
 
-export function Header(props) {
-  const [isModalVisible, setModalVisible] = useState(false);
-  console.log('modal: ', isModalVisible)
+export class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalVisible: false,
+      text: ''
+    }
+  }
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {props.text}
-      </Text>
+  closeModal() {
+    this.setState({ isModalVisible: !this.state.isModalVisible })
+  }
 
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.buttonContainer}>
-        <Image
-          style={styles.button}
-          source={require('./../assets/images/NewPost.png')}
-        />
-      </TouchableOpacity>
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          {this.props.text}
+        </Text>
 
-      
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={isModalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
-        <View style={{ marginTop: 22 }}>
-          <View>
-            <Text>Hello World!</Text>
+        <TouchableOpacity onPress={() => this.setState({ isModalVisible: true })} style={styles.buttonContainer}>
+          <Image
+            style={styles.button}
+            source={require('./../assets/images/NewPost.png')}
+          />
+        </TouchableOpacity>
 
-            <TouchableHighlight
-              onPress={() => {
-                setModalVisible(!isModalVisible);
-              }}>
-              <Text>Hide Modal</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </Modal>
+        <CreatePost isModalVisible={this.state.isModalVisible} closeModal={() => this.closeModal()} />
 
-    </View>
-  );
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
