@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, TextInput, View, TouchableHighlight, Image, StyleSheet, Button } from 'react-native';
+import { FirebaseWrapper } from '../firebase/firebase';
 
 export class CreatePost extends Component {
   constructor(props) {
@@ -9,9 +10,15 @@ export class CreatePost extends Component {
     }
   }
 
-  createPost() {
-    console.log('ayoooo', this.state.text)
-    // make call to Firebase
+  async createPost() {
+    try {
+      console.log('ayoooo', this.state.text)
+      // make call to Firebase
+      await FirebaseWrapper.GetInstance().CreateNewDocument('posts', { text: this.state.text });
+      this.props.closeModal();
+    } catch (error) {
+      console.log('Something went wrong when creating post', error)
+    }
   }
 
   render() {

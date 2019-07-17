@@ -1,6 +1,5 @@
 import * as firebase from 'firebase';
 import 'firebase/firestore';
-import console = require('console');
 
 export class FirebaseWrapper {
     constructor() {
@@ -31,8 +30,14 @@ export class FirebaseWrapper {
         try {
             //for any new document, it gives us a reference
             const ref = this._firestore.collection(collectionPath).doc()
+            const timestamp = firebase.firestore.Timestamp.now().toDate()
+            return await ref.set({ ...doc, createdAt: timestamp, id: ref.id })
         } catch (error) {
             console.log('something went wrong', error)
         }
     } 
+
+    async SetupCollectionListener(collectionPath, callback) {
+        
+    }
 }

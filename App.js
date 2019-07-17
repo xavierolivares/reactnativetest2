@@ -12,7 +12,7 @@ import { firebaseConfig } from './firebase/config'
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
-FirebaseWrapper.GetInstance.Initialize(firebaseConfig);
+FirebaseWrapper.GetInstance().Initialize(firebaseConfig);
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
