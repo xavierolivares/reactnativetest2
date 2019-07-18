@@ -16,7 +16,7 @@ export function Post(props) {
         </View>
       </View>
 
-      <Text style={styles.postText}>Id eiusmod aliquip nulla reprehenderit. Sit nostrud ad ipsum magna tempor enim labore consequat ut. Occaecat do cupidatat velit elit do sit enim ut labore. </Text>
+      <Text style={styles.postText}>{props.postInfo.text} </Text>
     </View>
   );
 }
